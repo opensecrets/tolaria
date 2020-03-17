@@ -5,7 +5,6 @@ class Admin::SessionsController < Tolaria::TolariaController
   # Present the signin form
 
   def new
-    puts("*********************************** hello there")
     if current_administrator
       return redirect_to(Tolaria.config.default_redirect, status:303)
     end
@@ -61,9 +60,6 @@ class Admin::SessionsController < Tolaria::TolariaController
     passcode = params[:administrator].try(:[], :passcode).to_s
 
     @administrator = Administrator.find_by_email(email)
-    puts("@administrator", @administrator)
-    
-    puts("@administrator.authenticate!(passcode)", @administrator.authenticate!(passcode))
     
     if @administrator && @administrator.authenticate!(passcode)
 
