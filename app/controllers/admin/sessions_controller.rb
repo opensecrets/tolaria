@@ -72,7 +72,7 @@ class Admin::SessionsController < Tolaria::TolariaController
       cookies.encrypted[:admin_auth_token] = {
         value: @administrator.auth_token,
         expires: params[:remember_me].eql?("1") ? 1.year.from_now : nil,
-        secure: Rails.env.production?, # Expect a TLS connection in production
+        # secure: Rails.env.production?, # Expect a TLS connection in production
         httponly: true, # JavaScript should not read this cookie
       }
 
