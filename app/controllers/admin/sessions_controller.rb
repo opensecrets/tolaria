@@ -60,7 +60,10 @@ class Admin::SessionsController < Tolaria::TolariaController
     passcode = params[:administrator].try(:[], :passcode).to_s
 
     @administrator = Administrator.find_by_email(email)
-
+    puts("@administrator", @administrator)
+    
+    puts("@administrator.authenticate!(passcode)", @administrator.authenticate!(passcode))
+    
     if @administrator && @administrator.authenticate!(passcode)
 
       # Auth successful
