@@ -5,6 +5,7 @@ class Admin::SessionsController < Tolaria::TolariaController
   # Present the signin form
 
   def new
+    puts("*********************************** hello there")
     if current_administrator
       return redirect_to(Tolaria.config.default_redirect, status:303)
     end
