@@ -61,8 +61,11 @@ class Admin::SessionsController < Tolaria::TolariaController
     passcode = params[:administrator].try(:[], :passcode).to_s
 
     @administrator = Administrator.find_by_email(email)
+    puts("@administrator", @administrator)
 
     if @administrator && @administrator.authenticate!(passcode)
+     puts("@administrator.authenticate!(passcode)", @administrator.authenticate!(passcode))
+
 
       # Auth successful
       # Set an signed admin cookie with our auth_token
